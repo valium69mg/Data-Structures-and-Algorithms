@@ -48,7 +48,24 @@ class LinkedList:
 
             prev.next_node = new
             new.next_node = next_node
-
+    
+    def remove(self,key):
+        current = self.head 
+        previous = None
+        found = False
+        while current and not found:
+            if current.data == key and current == self.head:
+                found = True 
+                self.head = current.next_node
+            elif current.data == key:
+                found = True 
+                previous.next_node = current.next_node
+            else:
+                previous = current 
+                current = current.next_node
+        return current
+    
+        
     def size(self):
         """
         Counts the elements and returns the size of the list
